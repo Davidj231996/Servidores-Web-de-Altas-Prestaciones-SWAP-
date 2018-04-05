@@ -9,7 +9,7 @@ Tareas a realizar:
 En esta práctica, se tiene que crear dos máquinas virtuales con Ubuntu Server, en mi caso he usado la versión 16.04.4.
 Tras la creación de dichas máquinas virtuales, teniamos que configurar ambas máquinas con una ip fija. Para ello, se deben de añadir un nuevo adaptador de red en cada máquina de tipo red interna, para su posterior modificación en el archivo /etc/networks/interfaces.
 En las siguientes imágenes podremos observar las configuraciones de red de ambas máquinas:
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica1/ifconfig.png "Configuración de Red Mquina 1")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica1/ifconfig1.png "Configuración de Red Mquina 1")
 ![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica1/ifconfig2.png "Configuración de Red Máquina 2")
 
 Para comprobar que ambas máquinas se ven, podemos usar ping y la ip de la otra máquina. Y para poder comprobar si hay internet en nuestras máquinas, podemos usar la orden curl a una dirección web sencilla.
