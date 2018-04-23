@@ -19,6 +19,7 @@ Se crean las máquinas virtuales, y mediante las siguientes ordenes se pueden a�
     sudo apt-get install haproxy
    
 >Configuración de nginx.
+
 Para poder configurar nginx, debemos de modificar el archivo "/etc/nginx/conf.d/default.conf", como indica el guión:
   - Definir grupo upstream con las IPs de nuestras máquinas.
   - La conexión entre nginx y los servidores finales sea HTTP 1.1.
