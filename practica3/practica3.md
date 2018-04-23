@@ -10,12 +10,12 @@ Tareas a realizar:
 En esta práctica, tendremos que usar las dos máquinas previamente creadas en la práctica 2, y añadirle una máquina virtual por cada balanceador software(haproxy y nginx).
 
 Se crean las máquinas virtuales, y mediante las siguientes ordenes se pueden añadir ambos software de balanceo, como indicadas en el guión de la práctica:
-  -> ###NGINX
+  - ###NGINX
     sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove
     sudo apt-get install nginx
     sudo systemctl start nginx
     
-  -> ###HAPROXY
+  - ###HAPROXY
     sudo apt-get install haproxy
    
 >Configuración de nginx.
@@ -28,9 +28,11 @@ Para poder configurar nginx, debemos de modificar el archivo "/etc/nginx/conf.d/
 Para iniciar nginx usamos la orden "sudo systemctl start nginx", y comprobamos con curl a la IP del balanceador desde una máquina externa.
 
 > Versión de nginx.
+
 ![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/Captura%20de%20pantalla%20(86).png "Confirmación de la copia del tar.tgz")
 
 > Configuración de haproxy.
+
 Primero configuramos el archivo "/etc/haproxy/haproxy.cfg", tal y como se indica en el guión y podemos observar a continuación:
   global
     daemon
@@ -53,12 +55,15 @@ Primero configuramos el archivo "/etc/haproxy/haproxy.cfg", tal y como se indica
 Una vez configurado el archivo, procedemos con el lanzamiento de haproxy mediante la orden "sudo /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg", y comprobamos con curl al balanceador de haproxy.
 
 > Versión de haproxy.
+
 ![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/Captura%20de%20pantalla%20(85).png "Confirmación de la copia del tar.tgz")
 
 > Instalación de Apache Benmark.
+
  Lo instalamos en una máquina diferente a las que tenemos, pero dentro de la misma red interna. Para ello usamos la orden "sudo apt-get install apache2-utils".
  
  > Lanzamiento de Apache Benmark.
+ 
  Para el lanzamiento del Apache Benmark, usamos la orden dada en el guión "ab -n 1000 -c 10 http://"IP máquina balanceadora"/index.html"
  
  El IP de la máquina balanceadora serán las dos máquinas que tenemos cada uno con haproxy y nginx.
