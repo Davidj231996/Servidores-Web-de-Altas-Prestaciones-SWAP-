@@ -18,7 +18,7 @@ Se crean las máquinas virtuales, y mediante las siguientes ordenes se pueden a�
   -> ###HAPROXY
     sudo apt-get install haproxy
    
-> Configuración de nginx.
+>Configuración de nginx.
 Para poder configurar nginx, debemos de modificar el archivo "/etc/nginx/conf.d/default.conf", como indica el guión:
   - Definir grupo upstream con las IPs de nuestras máquinas.
   - La conexión entre nginx y los servidores finales sea HTTP 1.1.
@@ -52,7 +52,7 @@ Primero configuramos el archivo "/etc/haproxy/haproxy.cfg", tal y como se indica
 Una vez configurado el archivo, procedemos con el lanzamiento de haproxy mediante la orden "sudo /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg", y comprobamos con curl al balanceador de haproxy.
 
 > Versión de haproxy.
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/Captura%20de%20pantalla%20(8).png "Confirmación de la copia del tar.tgz")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/Captura%20de%20pantalla%20(85).png "Confirmación de la copia del tar.tgz")
 
 > Instalación de Apache Benmark.
  Lo instalamos en una máquina diferente a las que tenemos, pero dentro de la misma red interna. Para ello usamos la orden "sudo apt-get install apache2-utils".
