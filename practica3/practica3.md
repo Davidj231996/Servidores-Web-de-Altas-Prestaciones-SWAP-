@@ -10,12 +10,14 @@ Tareas a realizar:
 En esta práctica, tendremos que usar las dos máquinas previamente creadas en la práctica 2, y añadirle una máquina virtual por cada balanceador software(haproxy y nginx).
 
 Se crean las máquinas virtuales, y mediante las siguientes ordenes se pueden añadir ambos software de balanceo, como indicadas en el guión de la práctica:
-  - ###NGINX
+  - 
+  ###NGINX
     sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove
     sudo apt-get install nginx
     sudo systemctl start nginx
     
-  - ###HAPROXY
+  - 
+  ###HAPROXY
     sudo apt-get install haproxy
    
 >Configuración de nginx.
