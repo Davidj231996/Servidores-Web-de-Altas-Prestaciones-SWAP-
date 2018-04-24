@@ -86,4 +86,4 @@ Una vez configurado el archivo, procedemos con el lanzamiento de haproxy mediant
  
  Podemos observar como el balanceador reparte las peticiones de forma equitativa. Esto se puede observar en el porcentaje de CPU de ambas máquinas.
  
- Además podemos observar, como en la máquina 1 y 2, los trabajos ejecutados son de apache2, mientras que en la máquina balanceadora se ejecuta nginx.
+ Además podemos observar, como en la máquina 1 y 2, los trabajos ejecutados son de apache2, mientras que en la máquina balanceadora se ejecuta haproxy.
