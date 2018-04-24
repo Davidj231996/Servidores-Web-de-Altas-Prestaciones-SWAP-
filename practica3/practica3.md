@@ -74,4 +74,11 @@ Una vez configurado el archivo, procedemos con el lanzamiento de haproxy mediant
  
  > Comprobación balanceador nginx.
  
+ ![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/Captura%20de%20pantalla%20(89).png "Confirmación de la copia del tar.tgz")
+ 
+ Podemos observar como el balanceador reparte las peticiones de forma que de cada tres peticiones, dos se las envía a la máquina 1 y una a la máquina 2. Esto se puede observar en el porcentaje de CPU de ambas máquinas.
  > Comprobación balanceador haproxy.
+ 
+ ![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/Captura%20de%20pantalla%20(90).png "Confirmación de la copia del tar.tgz")
+ 
+ Podemos observar como el balanceador reparte las peticiones de forma equitativa. Esto se puede observar en el porcentaje de CPU de ambas máquinas.
