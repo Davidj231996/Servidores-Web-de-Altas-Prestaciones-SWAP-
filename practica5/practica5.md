@@ -56,9 +56,9 @@ Primero, debemos de modificar unas líneas en el archivo "/etc/mysql/mysql.conf.
 
 Despues de reinicar el mysql en ambas máquinas y sin errores, podemos volver a la máquina maestra y entrar en mysql. Tenemos que
 crear un usuario y darle permisos de acceso para la replicación. Esto se realiza mediante las ordenes:
-  CREATE USER esclavo IDENTIFIED BY 'esclavo';
-  GRANT REPLICATION SLAVE ON *.* TO 'esclavo'@'%'
-IDENTIFIED BY 'esclavo';
+  "CREATE USER esclavo IDENTIFIED BY 'esclavo';"  
+  "GRANT REPLICATION SLAVE ON *.* TO 'esclavo'@'%'
+IDENTIFIED BY 'esclavo';"
 
 Una vez creado, no nos olvidemos de bloquear las tablas de la base de datos maestra. Después obtenemos los datos de la configuración
 de la base de datos: "show master status;".
