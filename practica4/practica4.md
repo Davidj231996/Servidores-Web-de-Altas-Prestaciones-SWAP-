@@ -60,6 +60,6 @@ Para comprobar que esta funcionando el script, ejecutamos la orden: "netstat -tu
 
 > Netstat -tulpn
 
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/netstat.png "El script con las ordenes iptables")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/netstat1.png "El script con las ordenes iptables")
 
 
