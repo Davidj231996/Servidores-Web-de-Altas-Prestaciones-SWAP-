@@ -32,7 +32,7 @@ Para hacer que las máquinas escuchen por dicho puerto y  con ssl, debemos modif
 > Configuración del balanceador nginx para que escuche por el puerto 443.
 
 En la máquina balanceadora, no tenemos apache instalado por lo que tenemos que modificar otro archvio para poder conseguir que nuestra máquina escuche por el puerto 443. Dicho archivo es: "/etc/nginx/conf.d/default.conf".
-Tenemos que modificar las líneas para que tenga "SSL ON" y sepa donde encontrar los archivos "apache.key" y "apache.crt".
+Tenemos que modificar las líneas para que sepa donde encontrar los archivos "apache.key" y "apache.crt".
 
 ![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/default3.png "El archivo default.conf")
 ![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/default3_1.png "Modificacion del archivo default.conf")
@@ -61,3 +61,5 @@ Para comprobar que esta funcionando el script, ejecutamos la orden: "netstat -tu
 > Netstat -tulpn
 
 ![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/netstat.png "Salida de la orden netstat -tulpn")
+
+
