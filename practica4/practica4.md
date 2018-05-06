@@ -25,8 +25,8 @@ Para hacer que las máquinas escuchen por dicho puerto y  con ssl, debemos modif
 
 > Modificación del archivo "default-ssl.conf".
 
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/default2.png "default-ssl.conf")
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/default1.png "Lineas a modificar en el archivo")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/default2.png "default-ssl.conf")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/default1.png "Lineas a modificar en el archivo")
 
 
 > Configuración del balanceador nginx para que escuche por el puerto 443.
