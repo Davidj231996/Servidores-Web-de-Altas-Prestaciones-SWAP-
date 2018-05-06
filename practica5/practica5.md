@@ -12,59 +12,70 @@ Tareas a realizar:
   4. Realizar la configuración maestro-esclavo de los servidores MySQL para que la
   replicación de datos se realice automáticamente.
 
-En esta práctica, tendremos que usar las dos máquinas finales y el balanceador nginx que teniamos de la práctica anterior.
+En esta práctica, vamos a crear bases de datos, y replicar la de la máquina final 1 en la 2 como si estuviesemos trabajando
+con una máquina final y su réplica.
 
-Lo que se nos pide a realizar en esta práctica es permitir la conexión mediante https (puerto 443) a las máquinas finales y al balanceador nginx.
-Para poder realizar esto, primero debemos de generar un certificado SSL autofirmado mediante la orden: "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt".
-Con esa orden creamos el fichero .key y el .crt. Debemos de crear el fichero en una de las máquinas y posteriormente copiarlas mediante SSH al resto de máquinas. Yo he usado la orden scp: "scp usuario@dominio.com:localizacion_archivo donde_guardarlo".
+Lo primero que debemos hacer es crear nuestras base de datos en ambas máquinas, es muy importante que las bases de datos
+y sus tablas tengan el mismo nombre en ambas máquinas, para así poder realizar la réplica.
 
-> Los ficheros creados
+Para la creación de la base de datos y su tabla, usaremos mysql, que deberá de estar instalado desde el proceso de instalación de
+ambas máquinas, en el que eligimos instalar mysql junto con el SO.
 
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/apaches.png "Localización de ambos ficheros")
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/apache_crt.png "apache.crt")
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/apache_key.png "apache.key")
+Para entrar usaremos la orden: "mysql -u root -p". Luego nos pedirá la contraseña en el caso que tengamos, si no lo dejamos
+en blanco y pulsamos intro.
 
-> Configuración de las máquinas finales para que escuchen por el puerto 443.
+Una vez dentro creamos la base de datos, con la orden: "create database contactos;". Una vez creada, entramos dentro de la base de datos
+("use contactos;"), y creamos una tabla: "create table datos(nombre varchar(100),tlf int);".
 
-Para hacer que las máquinas escuchen por dicho puerto y  con ssl, debemos modificar el archivo que nos dice el guión: "/etc/apache2/sites-available/default-ssl". En mi caso dicho archivo no existia, estaba el archivo "default-ssl.conf".
+Podemos observar que se ha creado dicha tabla mediante la orden: "show tables;".
 
-> Modificación del archivo "default-ssl.conf".
+A continuación podemos observar imágenes de las tablas ya creadas en ambas máquinas y con datos introducidos:
 
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/default2.png "default-ssl.conf")
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/default1.png "Lineas a modificar en el archivo")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica5/db1_1.png
+"Base de datos en la máquina 1")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica5/db2_1.png
+"Base de datos en la máquina 2")
 
+Ya tenemos ambas máquinas con sus respectivas bases de datos, ahora tenemos que conseguir que funcionen como maestrp-esclavo para
+que se realice la replica de la base de datos en la máquina, en la base de datos de la máquina 2.
 
-> Configuración del balanceador nginx para que escuche por el puerto 443.
+Primero, debemos de modificar unas líneas en el archivo "/etc/mysql/mysql.conf.d/mysqld.cnf":
+  1. Comentar la línea: bind-address 127.0.0.1
+  2. Le indicamos donde almacenar el log de errores: log_error = /var/log/mysql/error.log
+  3. Establecemos el identificador del servidor: server-id = 1(En caso del maestro) 2(En caso del esclavo)
+  4. El registro binario: log_bin = /var/log/mysql/bin.log
+  
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica5/bind.png
+"bind-address 127.0.0.1")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica5/log_error.png
+"log_error")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica5/server_id_1.png
+"Server id maestro")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica5/server_id_2.png
+"Server id esclavo")
 
-En la máquina balanceadora, no tenemos apache instalado por lo que tenemos que modificar otro archvio para poder conseguir que nuestra máquina escuche por el puerto 443. Dicho archivo es: "/etc/nginx/conf.d/default.conf".
-Tenemos que modificar las líneas para que sepa donde encontrar los archivos "apache.key" y "apache.crt".
+Despues de reinicar el mysql en ambas máquinas y sin errores, podemos volver a la máquina maestra y entrar en mysql. Tenemos que
+crear un usuario y darle permisos de acceso para la replicación. Esto se realiza mediante las ordenes:
+  CREATE USER esclavo IDENTIFIED BY 'esclavo';
+  GRANT REPLICATION SLAVE ON *.* TO 'esclavo'@'%'
+IDENTIFIED BY 'esclavo';
 
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/default3.png "El archivo default.conf")
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/default3_1.png "Modificacion del archivo default.conf")
+Una vez creado, no nos olvidemos de bloquear las tablas de la base de datos maestra. Después obtenemos los datos de la configuración
+de la base de datos: "show master status;".
 
-> Comprobación.
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica5/master.png
+"Configuración de la base de datos maestra")
 
-Para comprobar que todas las máquinas escuchen ahora también por el puerto 443, debemos de ejecutar la orden: "curl –k https://ipmaquina1/index.html".
+Volvemos a la máquina esclava, e introducimos los datos del maestro esclavo mediante la siguiente orden: "
+CHANGE MASTER TO MASTER_HOST='192.168.31.200',
+MASTER_USER='esclavo', MASTER_PASSWORD='esclavo',
+MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=501,
+MASTER_PORT=3306;".
 
-> Ejecución de curl en todas las máquinas.
+Posteriormente iniciamos el esclavo ("start slave;") y desbloqueamos las tablas en el maestro ("unlock tables;").
+Si ahora creamos un usuario en la base de datos maestra, se replicará instantaneamente en la base de datos esclava.
 
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/curl.png "Ejecución de curl a las tres máquinas")
-
-> Configuración del cortafuegos.
-
-Debemos de crear un script como indica el guión, con ordenes iptables, para que una de nuestras máquinas finales solo escuche por el puerto 22,80 y 443, y localhost.
-El script creado es el mismo que se indica en el guión.
-
-> El script
-
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/iptables.png "El script con las ordenes iptables")
-
-> Comprobación.
-
-Para comprobar que esta funcionando el script, ejecutamos la orden: "netstat -tulpn", y observamos los puertos que aparecen.
-
-> Netstat -tulpn
-
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/netstat1.png "El script con las ordenes iptables")
-
-
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica5/db1_2.png
+"Creación usuario en base de datos maestra")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica5/db2_2.png
+"Replica del usuario previamente creado")
