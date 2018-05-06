@@ -16,8 +16,8 @@ Con esa orden creamos el fichero .key y el .crt. Debemos de crear el fichero en 
 > Los ficheros creados
 
 ![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/apaches.png "Localización de ambos ficheros")
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/apache_crt.png "apache.crt")
-![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica3/apache_key.png "apache.key")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/apache_crt.png "apache.crt")
+![alt text](https://github.com/Davidj231996/Servidores-Web-de-Altas-Prestaciones-SWAP-/blob/master/practica4/apache_key.png "apache.key")
 
 > Configuración de las máquinas finales para que escuchen por el puerto 443.
 
