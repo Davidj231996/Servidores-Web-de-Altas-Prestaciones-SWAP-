@@ -1,13 +1,19 @@
 # Ejercicio 1
 
-## Buscar información sobre las tareas o servicios web para los que se usan más los programas que comentamos al principio de la sesión: 
+## Calcular la disponibilidad del sistema si tenemos dos réplicas de cada elemento (en total 3 elementos en cada subsistema). 
 
-Apache: Es un servidor web HTTP.
+Web: 85%                    Web: 97.75%
 
-Nginx: Se usa como balanceador.
+Application: 90%            Application: 99%
 
-Thttpd: Obtener velocidad en la transferencia de archivos y reducción de gastos innecesariospara funciones que no son requeridas en el servidor.
+Database: 99.9%             Database: 99.9999%
 
-Cherokee: Es un servidor web multiplataforma. Su objetivo es ser rápido y completamente funcional, sin dejar de ser liviano comparado con otros servidores web.
+DNS: 98%                    DNS: 99.96%
 
-Node.js: Es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor.
+Firewall: 85%               Firewall: 97.75%
+
+Switch: 99%                 Switch: 99.99%
+
+Data Center: 99.99%         Data Center: 99.9999%
+
+ISP: 95%                    ISP: 99.75%
