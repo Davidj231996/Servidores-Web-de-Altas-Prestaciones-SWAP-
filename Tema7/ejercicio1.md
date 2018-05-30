@@ -1,13 +1,9 @@
 # Ejercicio 1
 
-## Buscar información sobre las tareas o servicios web para los que se usan más los programas que comentamos al principio de la sesión: 
+## ¿Qué tamaño de unidad de unidad RAID se obtendrá al configurar un RAID 0 a partir de dos discos de 100 GB y 100 GB? 
 
-Apache: Es un servidor web HTTP.
+El tamaño de la unida RAID 0 será de 200GB, ya que simplemente se divide el almacenamiento total entre ambos discos.
 
-Nginx: Se usa como balanceador.
+## ¿Qué tamaño de unidad de unidad RAID se obtendrá al configurar un RAID 0 a partir de tres discos de 200 GB cada uno? 
 
-Thttpd: Obtener velocidad en la transferencia de archivos y reducción de gastos innecesariospara funciones que no son requeridas en el servidor.
-
-Cherokee: Es un servidor web multiplataforma. Su objetivo es ser rápido y completamente funcional, sin dejar de ser liviano comparado con otros servidores web.
-
-Node.js: Es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor.
+Igual que antes, en este caso sería de 600GB.
