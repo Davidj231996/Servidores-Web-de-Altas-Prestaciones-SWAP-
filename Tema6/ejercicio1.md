@@ -1,13 +1,26 @@
 # Ejercicio 1
 
-## Buscar información sobre las tareas o servicios web para los que se usan más los programas que comentamos al principio de la sesión: 
+## Aplicar con iptables una política de denegar todo el tráfico en una de las máquinas de prácticas. Comprobar el funcionamiento.
+## Aplicar con iptables una política de permitir todo el tráfico en una de las máquinas de prácticas. Comprobar el funcionamiento. 
 
-Apache: Es un servidor web HTTP.
+Las reglas iptables para denegar todo el tráfico son:
+  //Para eliminar todas las reglas
+  iptables –F
+  iptables -X
+  iptables -Z
+  iptables -t nat -F
+  //Aceptar todo el tráfico
+  iptables −P INPUT DROP
+  iptables −P OUTPUT DROP
+  iptables −P FORWARD DROP
 
-Nginx: Se usa como balanceador.
-
-Thttpd: Obtener velocidad en la transferencia de archivos y reducción de gastos innecesariospara funciones que no son requeridas en el servidor.
-
-Cherokee: Es un servidor web multiplataforma. Su objetivo es ser rápido y completamente funcional, sin dejar de ser liviano comparado con otros servidores web.
-
-Node.js: Es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor.
+Las reglas iptables para aceptar todo el tráfico son:
+  //Para eliminar todas las reglas
+  iptables –F
+  iptables -X
+  iptables -Z
+  iptables -t nat -F
+  //Aceptar todo el tráfico
+  iptables −P INPUT ACCEPT
+  iptables −P OUTPUT ACCEPT
+  iptables −P FORWARD ACCEPT
