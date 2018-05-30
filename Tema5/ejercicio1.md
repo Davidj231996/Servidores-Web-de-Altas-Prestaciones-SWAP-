@@ -1,13 +1,12 @@
 # Ejercicio 1
 
-## Buscar información sobre las tareas o servicios web para los que se usan más los programas que comentamos al principio de la sesión: 
+## Buscar información sobre cómo calcular el número de conexiones por segundo. 
 
-Apache: Es un servidor web HTTP.
+Con nginx:
 
-Nginx: Se usa como balanceador.
+  - Entramos al link http://ip.address.here/nginx_status o http://your-domain-name-here/nginx_status, tras haber instalado nginx en nuestro servidor web. Nos aparaeceran cuatro variables informativas: Número total de conexiones abiertas, conexiones aceptadas, conexiones manejadas y peticiones manejadas.
+  Para calcular las conexiones por segundo: peticiones manejadas / conexiones manejadas.
+  
+Desde la línea de comandos de linux:
 
-Thttpd: Obtener velocidad en la transferencia de archivos y reducción de gastos innecesariospara funciones que no son requeridas en el servidor.
-
-Cherokee: Es un servidor web multiplataforma. Su objetivo es ser rápido y completamente funcional, sin dejar de ser liviano comparado con otros servidores web.
-
-Node.js: Es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor.
+  - Usando el comando "netstat | grep http | wc -l".
